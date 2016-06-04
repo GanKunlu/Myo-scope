@@ -25,6 +25,7 @@ def GetDegreeFromACC(ACCs):
 		ACC_angle = []
 		for data in ACC:
 			ACC_angle.append(np.arccos(data/R)*180/np.pi)
+		ACC_angle[2] = np.sign(ACC_angle[2])*(abs(ACC_angle[2])-abs(90-abs(ACC_angle[1]))) # Eliminate the effect of the rotational movement
 		angle.append(ACC_angle*np.sign([-ACC[1],-ACC[1],-ACC[0]]))
 	return angle
 
