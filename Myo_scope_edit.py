@@ -123,6 +123,10 @@ class MYOGrapher(HasTraits):
 		legend.plots = self.plot_EMG.plots
 		self.plot_EMG.overlays.append(legend) 		
 	
+	def _window_size_changed(self):
+		self.EMG_StreamWin = np.zeros(self.window_size)
+		self.Angle_StreamWin = np.zeros(self.window_size)
+	
 	def _select_angle_names_changed(self):
 		for _myos_in in range(2):
 			self.stream_Angle[_myos_in] = np.zeros(self.Angle_length)
